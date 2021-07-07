@@ -6,14 +6,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 
 import info
+import links
 
 driver = webdriver.Chrome(ChromeDriverManager().install())
 
-RTX3070LINK1 = "https://www.bestbuy.com/site/nvidia-geforce-rtx-3070-8gb-gddr6-pci-express-4-0-graphics-card-dark-platinum-and-black/6429442.p?skuId=6429442"
-RTX3070LINK2 = "https://www.bestbuy.com/site/gigabyte-geforce-rtx-3070-8g-gddr6-pci-express-4-0-graphics-card-black/6437912.p?skuId=6437912"
-XBOXONETEST = "https://www.bestbuy.com/site/microsoft-xbox-one-s-1tb-console-bundle-white/6415222.p?skuId=6415222"
 
-driver.get(RTX3070LINK1)
+driver.get(links.PNY_32GB_USB_STICK)
 
 isComplete = False
 
@@ -76,7 +74,7 @@ while not isComplete:
         isComplete = True
     except:
         # make sure this link is the same as the link passed to driver.get() before looping
-        driver.get(RTX3070LINK1)
+        driver.get(links.PNY_32GB_USB_STICK)
         print("Error - restarting bot")
         continue
 
