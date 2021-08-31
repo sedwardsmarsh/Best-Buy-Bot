@@ -17,9 +17,6 @@ def bot():
     opts = ChromeOptions()
     driver = webdriver.Chrome(options=opts)
 
-    # load best buy store page for items
-    driver.get(links.XBOX_SX1)
-
     # default wait mechanism for all elements
     wait = WebDriverWait(driver, 10, poll_frequency=1)
 
@@ -33,12 +30,20 @@ def bot():
     # keep track of when script starts
     time_start = datetime.now()
 
+    # load first best buy link
+    link_arr = links.link_arr
+    link_idx = 0
+    driver.get(link_arr[0])
+
     while not isComplete:
         # find add to cart button
         try:
             atcBtn = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'button.btn.btn-primary.btn-lg.btn-block.btn-leading-ficon.add-to-cart-button')))
         except:
-            driver.refresh()
+            # load next link in array
+            link_idx = (link_idx + 1) % len(link_arr)
+            driver.get(link_arr[link_idx])
+            print(f'switching to link: {link_arr[link_idx]}')
             continue
 
         try:
