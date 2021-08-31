@@ -1,10 +1,8 @@
 # RTX 3070 Best Buy Bot
 
-## TODO
-* make isComplete variable check if a dummy file has been generated, signifying that the item has been purchased
-
 ## Features
 - Refreshes link until "Add to Cart" button is available
+	- Rotates between array of links in `links.py` each refresh 
 - Automate entire checkout process
 
 ## Prerequisites
