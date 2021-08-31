@@ -94,8 +94,9 @@ def bot():
             isComplete = True
         except:
             # make sure this link is the same as the link passed to driver.get() before looping
-            driver.get(links.XBOX_SX1)
-            print(f'Error - restarting bot\n')
+            link_idx = (link_idx + 1) % len(link_arr)
+            driver.get(link_arr[link_idx])
+            print(f'Error - restarting bot and switching link to: {link_arr[link_idx]}\n')
             continue
 
     # get finish time of script
